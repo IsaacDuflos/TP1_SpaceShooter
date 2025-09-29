@@ -51,10 +51,26 @@ void AShipPawn::Fire()
 {
 	if (ProjectileClass)
 	{
-		FVector SpawnLocation = ShipMesh->GetComponentLocation() + FVector(100,0,0); 
-		FRotator SpawnRotation = GetActorRotation();
+		APlayerController* PC = Cast<APlayerController>(GetController());
+		if (PC)
+		{
+			FHitResult Hit;
+			PC->GetHitResultUnderCursor(ECC_Visibility, false, Hit);
 
-		GetWorld()->SpawnActor<AProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+			if (Hit.bBlockingHit)
+			{
+				FVector ShipPos = GetActorLocation();
+				FVector Target = Hit.Location;
+
+				FVector Dir = Target - ShipPos;
+				Dir.Z = 0; // on reste sur le plan X/Y
+				Dir.Normalize();
+
+				FVector SpawnLocation = ShipMesh->GetComponentLocation() + Dir * 100.f;
+				FRotator SpawnRotation = Dir.Rotation();
+
+				GetWorld()->SpawnActor<AProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+			}
+		}
 	}
 }
-
