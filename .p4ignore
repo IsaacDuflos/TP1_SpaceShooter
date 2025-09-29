@@ -1,0 +1,67 @@
+# Rider / IntelliJ
+.idea/
+*.iml
+
+# Visual Studio
+.vs/
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+.vsconfig
+
+# Xcode
+*.xcodeproj
+*.xcworkspace
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+*.ipa
+
+# Unreal Engine binaries
+Binaries/*
+Plugins/**/Binaries/*
+
+# Unreal build files
+Build/*
+!Build/*/
+Build/*/**
+!Build/*/PakBlacklist*.txt
+!Build/**/*.ico
+
+# Built data for maps
+*_BuiltData.uasset
+
+# Unreal auto-generated
+Saved/*
+Intermediate/*
+Plugins/**/Intermediate/*
+DerivedDataCache/*
+
+# Crash reports
+*.dmp
